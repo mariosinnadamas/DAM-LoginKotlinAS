@@ -43,7 +43,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             LogInTheme {
-                login();
+                login()
             }
         }
     }
