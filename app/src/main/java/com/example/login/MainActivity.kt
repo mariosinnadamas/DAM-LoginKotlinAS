@@ -1,10 +1,12 @@
 package com.example.login
 
+import android.R
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -21,6 +23,8 @@ import androidx.compose.material.icons.rounded.Home
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
@@ -79,18 +83,20 @@ fun login(){
             //Caja Email
             Box(modifier = Modifier.padding(top = 60.dp)){
                 var email by rememberSaveable { mutableStateOf("") }
-                TextField(
+                OutlinedTextField(
                     value = email,
                     onValueChange = {email = it},
-                    placeholder = {Text("Email")},)
+                    placeholder = {Text("Email")},
+                    colors = OutlinedTextFieldDefaults.colors(focusedBorderColor = Color.Blue))
             }
             //Caja password
             Box(modifier = Modifier.padding(top = 30.dp)){
                 var password by rememberSaveable { mutableStateOf("") }
-                TextField(
+                OutlinedTextField(
                     value = password,
                     onValueChange = {password = it},
                     placeholder = {Text("Password")},
+                    colors= OutlinedTextFieldDefaults.colors(focusedBorderColor = Color.Blue),
                     singleLine = true,
                     visualTransformation = PasswordVisualTransformation())
             }
