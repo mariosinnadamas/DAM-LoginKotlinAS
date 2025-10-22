@@ -1,6 +1,9 @@
 package com.example.login.ui.login
 
+import android.service.autofill.OnClickAction
+import android.text.style.ClickableSpan
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -28,13 +31,16 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.LinkAnnotation
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import com.example.login.ui.navigation.AppScreen
 
 @Composable
-fun login(){
+fun Login(navController: NavController) {
     Box(modifier = Modifier
         .fillMaxSize()
         .padding(30.dp)){
@@ -86,7 +92,9 @@ fun login(){
                 .fillMaxWidth()
                 .padding(top = 20.dp),
                 horizontalArrangement = Arrangement.End){
-                Text(text = "¿Olvidaste tu contraseña?",
+                Text(modifier = Modifier.clickable(
+                    true, onClick = {navController.navigate(AppScreen.Recovery.route)}),
+                    text = "¿Olvidaste tu contraseña?",
                     color = Color.Blue,
                     fontWeight = FontWeight.Bold)
             }
